@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bootstrap 101 Template</title>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-tagsinput.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-1.12.4.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Include Tagsinput Plugin -->
+        <script src="js/bootstrap-tagsinput.min.js"></script>
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img alt="Athena" src="images/Logo.png" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Browse</a></li>
+                    </ul>
+                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#add-modal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                    <div class="nav navbar-nav navbar-right">
+                        <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login-modal">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- Modal Popup Add -->
+        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add a new Url to the Collection</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group">
+                                <div class="input-group-addon">Title</div>
+                                <input type="text" class="form-control" id="title" placeholder="Coole Site">
+                            </div>
+                            <br />
+                            <div class="input-group has-error" >
+                                <div class="input-group-addon">Url</div>
+                                <input type="text" class="form-control" id="url" placeholder="www.website.com" aria-describedby="helpBlock3">
+                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                <span id="inputError3Status" class="sr-only">(error)</span>
+                            </div>
+                            <br />
+                            <div class="input-group" >
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span></div>
+                                <input type="text" class="form-control" id="tag" placeholder="Add a Tag" data-role="tagsinput">
+                            </div>
+                            <div id="helpBlock3" class="help-block has-error"><span>Please enter a valid <strong>Url</strong>.</span></div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- Modal Popup Login -->
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Login to Your Account</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+                                <input type="text" class="form-control" id="user" placeholder="Username">
+                            </div>
+                            <br />
+                            <div class="input-group has-error" >
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
+                                <input type="password" class="form-control" id="pass" placeholder="Password" aria-describedby="helpBlock2">
+                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                <span id="inputError2Status" class="sr-only">(error)</span>
+                            </div>
+                            <div id="helpBlock2" class="help-block has-error"><span>Please enter a <strong>Password</strong>.</span></div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left">Login</button>
+                        <a href="#">Forgot Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content Area -->
+        <div class="container-fluid">
+            <ul class="list-group top10-list">
+                <li class="list-group-item"><h4>Top 10 Sites of all Time</h4>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">1</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Google</h4>
+                        <a href="www.google.de">www.google.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">aplhabet<span data-role="remove"></span></span>
+                        <span class="tag label label-info">search<span data-role="remove"></span></span>
+                        <span class="tag label label-info">find<span data-role="remove"></span></span>
+                        <span class="tag label label-info">web<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Amazon</h4>
+                        <a href="www.google.de">www.amazon.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">shopping<span data-role="remove"></span></span>
+                        <span class="tag label label-info">books<span data-role="remove"></span></span>
+                        <span class="tag label label-info">dvds<span data-role="remove"></span></span>
+                        <span class="tag label label-info">sales<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Youtube</h4>
+                        <a href="www.google.de">www.youtube.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">videos<span data-role="remove"></span></span>
+                        <span class="tag label label-info">fun<span data-role="remove"></span></span>
+                        <span class="tag label label-info">social<span data-role="remove"></span></span>
+                        <span class="tag label label-info">worldwide<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">4</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Facebook</h4>
+                        <a href="www.google.de">www.facebook.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">social<span data-role="remove"></span></span>
+                        <span class="tag label label-info">friends<span data-role="remove"></span></span>
+                        <span class="tag label label-info">upload photos<span data-role="remove"></span></span>
+                        <span class="tag label label-info">share links<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">5</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Yahoo</h4>
+                        <a href="www.google.de">www.yahoo.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">portal<span data-role="remove"></span></span>
+                        <span class="tag label label-info">search<span data-role="remove"></span></span>
+                        <span class="tag label label-info">e-mail<span data-role="remove"></span></span>
+                        <span class="tag label label-info">chatrooms<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">6</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Wikipedia</h4>
+                        <a href="www.google.de">www.wikipedia.org</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">free<span data-role="remove"></span></span>
+                        <span class="tag label label-info">encyclopedia<span data-role="remove"></span></span>
+                        <span class="tag label label-info">collaboratively<span data-role="remove"></span></span>
+                        <span class="tag label label-info">wiki<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">7</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Twitter</h4>
+                        <a href="www.google.de">www.twitter.com</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">microblogging<span data-role="remove"></span></span>
+                        <span class="tag label label-info">instant messaging<span data-role="remove"></span></span>
+                        <span class="tag label label-info">social<span data-role="remove"></span></span>
+                        <span class="tag label label-info">tweets<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">8</span>
+                    </div>
+                    <div class="segment">
+                        <h4>Twitter</h4>
+                        <a href="www.google.de">www.twitter.com</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">microblogging<span data-role="remove"></span></span>
+                        <span class="tag label label-info">instant messaging<span data-role="remove"></span></span>
+                        <span class="tag label label-info">social<span data-role="remove"></span></span>
+                        <span class="tag label label-info">tweets<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">9</span>
+                    </div>
+                    <div class="segment">
+                        <h4>eBay</h4>
+                        <a href="www.google.de">www.ebay.de</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">e-commerce<span data-role="remove"></span></span>
+                        <span class="tag label label-info">shopping<span data-role="remove"></span></span>
+                        <span class="tag label label-info">online auction<span data-role="remove"></span></span>
+                        <span class="tag label label-info">paypal<span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="list-group-item clearfix">
+                    <div class="segment">
+                        <span class="badge">10</span>
+                    </div>
+                    <div class="segment">
+                        <h4>LinkedIn</h4>
+                        <a href="www.google.de">www.linkedin.com</a>
+                    </div>
+                    <div class="segment">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="tag label label-info">professional networking<span data-role="remove"></span></span>
+                        <span class="tag label label-info">social<span data-role="remove"></span></span>
+                        <span class="tag label label-info">job<span data-role="remove"></span></span>
+                        <span class="tag label label-info">industry experts <span data-role="remove"></span></span>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <hr />
+          <form class="form-inline">
+                <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-sort-by-attributes"></span></div>
+                <select class="form-control">
+                    <option>Latest</option>
+                    <option>Most viewed</option>
+                    <option>Alphabetical</option>
+                </select>
+            </div>
+        </form>
+            
+        </div>
+    </body>
+</html>

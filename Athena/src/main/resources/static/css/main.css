@@ -1,0 +1,38 @@
+.navbar-brand {
+    padding: 0px 15px;
+}
+.navbar-right{
+    margin-right: 0;
+    margin-left: 0;
+}
+.input-group-addon {
+    min-width: 60px
+}
+.bootstrap-tagsinput {
+    width: 100%;
+}
+.label-info {
+    background-color: #5cb85c;
+}
+
+.tag [data-role="remove"] {
+    margin-left: 8px;
+    cursor: pointer;
+}
+.tag [data-role="remove"]:after {
+    content: "x";
+    padding: 0px 2px;
+}
+
+.top10-list .badge {
+    width: 40px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+.top10-list .segment{
+    float: left;
+    margin-right: 5px;
+}
+.top10-list .segment>h4{
+    margin: 0px;
+}
