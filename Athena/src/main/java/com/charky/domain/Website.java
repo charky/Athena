@@ -1,6 +1,5 @@
 package com.charky.domain;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -41,11 +40,6 @@ public class Website {
         this.url = url;
         this.tags = tags;
     }
-    public Website(String title, String url, String tags) {
-        this.title = title;
-        this.url = url;
-        this.setTags(tags);
-    }
 	
     public int getId() {
 		return id;
@@ -85,14 +79,6 @@ public class Website {
 	 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
-	}
-
-	public void setTags(String tags) {
-        String[] tagList = tags.split(",");
-        this.tags = new LinkedList<Tag>();
-        for(String tag: tagList){
-        	this.tags.add(new Tag(tag.trim()));
-        }
 	}
 
 	@Override

@@ -9,17 +9,9 @@ import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
 import com.charky.domain.Tag;
-import com.charky.domain.TagRepository;
 
 @Component
 public class TagsListFormatter  implements Formatter<List<Tag>>{
-
-	private TagRepository tagRepository; 
-	
-	public TagsListFormatter(TagRepository tagRepository) {
-		super();
-		this.tagRepository = tagRepository;
-	}
 
 	@Override
 	public String print(List<Tag> tagList, Locale locale) {
@@ -35,12 +27,10 @@ public class TagsListFormatter  implements Formatter<List<Tag>>{
 		String[] tagList = sTagList.split(",");
 		List<Tag> tags = new LinkedList<Tag>();
         for(String tag: tagList){
-        	//Check if Tag Exists
-        	Tag t = tagRepository.findByName(tag);
-        	if(t == null){
-        		t = new Tag(tag.trim());
-        	}
-        	tags.add(t);
+        	//Trim Tag
+        	tag = tag.trim();
+        	//Add Tag to list
+        	tags.add(new Tag(tag));
         }
         return tags;
 	}

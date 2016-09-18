@@ -10,9 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.charky.domain.Tag;
-import com.charky.domain.TagRepository;
 import com.charky.domain.Website;
-import com.charky.domain.WebsiteRepository;
+import com.charky.repository.TagRepository;
+import com.charky.repository.WebsiteRepository;
 
 @Component
 public class AthenaRunner  implements CommandLineRunner{

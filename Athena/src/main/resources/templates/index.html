@@ -5,19 +5,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bootstrap 101 Template</title>
+        <title>Athena - Universal collection of the web</title>
+        <link rel="icon" type="image/png" href="images/favicon.png" th:href="@{/images/favicon.png}"/>
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"  rel="stylesheet" />
         <link href="css/bootstrap-tagsinput.css" th:href="@{/css/bootstrap-tagsinput.css}" rel="stylesheet" />
         <link href="css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
     </head>
     <body>
+    	<script th:inline="javascript">
+    	/*<![CDATA[*/
+		var jsCommandList = [[${jsCommandList}]];
+       	/*]]>*/
+		</script> 
+    
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-1.12.4.min.js" th:src="@{/js/jquery-1.12.4.min.js}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
         <!-- Include Tagsinput Plugin -->
         <script src="js/bootstrap-tagsinput.min.js" th:src="@{/js/bootstrap-tagsinput.min.js}"></script>
+        <!-- Athena JS Functions -->
+        <script src="js/main.js" th:src="@{/js/main.js}"></script>
         
         <!-- Navigation -->
         <nav class="navbar navbar-default">
@@ -31,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img alt="Athena" src="images/Logo.png" /></a>
+                    <a class="navbar-brand" href="#"><img alt="Athena" src="images/Logo.png" th:src="@{/images/Logo.png}"  /></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +49,7 @@
                         <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Browse</a></li>
                     </ul>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#add-modal">
+                    <button id="bt_add" type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#add-modal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
                     <form class="navbar-form navbar-left">
                         <div class="input-group">
@@ -61,7 +70,8 @@
         <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                	<form th:object="${website}" th:action="@{/websites}" method="post">
+                	<form id="form_add" th:object="${website}" th:action="@{/websites}" method="post">
+                		<input type="hidden" th:field="*{id}" />
 	                    <div class="modal-header">
 	                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                        <h4 class="modal-title">Add a new Url to the Collection</h4>
@@ -84,7 +94,9 @@
 	                                <input type="text" class="form-control" id="tags" th:field="*{tags}" placeholder="Add a Tag" data-role="tagsinput" />
 	                            </div>
 	                            <div id="helpBlock3" class="help-block has-error"><span>Please enter a valid <strong>Url</strong>.</span></div>
-	                        
+	                        	<a class="btn btn-danger" th:classappend="*{id}?'':'hide'" th:href="@{/website/{id}/delete(id=${website.id})}">
+                            		<span class="glyphicon glyphicon-trash"></span>
+                       			 </a>
 	                    </div>
 	                    <div class="modal-footer">
 	                        <button type="submit" class="btn btn-primary btn-block">Save</button>
@@ -142,9 +154,9 @@
                         <span class="tag label label-info" th:each="tag: ${website.tags}" th:text="${tag.name}">aplhabet<span data-role="remove"></span></span>
                     </div>
                     <div class="pull-right">
-                        <button class="btn btn-warning">
+                        <a class="btn btn-warning" th:href="@{/website/{id}(id=${website.id})}">
                             <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
+                        </a>
                     </div>
                 </li>
             </ul>
