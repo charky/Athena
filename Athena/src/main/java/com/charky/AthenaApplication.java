@@ -3,6 +3,7 @@ package com.charky;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class AthenaApplication {
 
@@ -10,4 +11,7 @@ public class AthenaApplication {
 		SpringApplication.run(AthenaApplication.class, args);
 	}
 }
+
+
+
 

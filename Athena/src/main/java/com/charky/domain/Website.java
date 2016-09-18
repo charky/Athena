@@ -1,7 +1,9 @@
 package com.charky.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,9 @@ public class Website {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+	@Column(nullable = false)
 	private String title;
+	@Column(nullable = false)
 	private String url;
 	private int hits = 0;
 
@@ -30,12 +34,17 @@ public class Website {
 	private List<Tag> tags;
 	
 	
-	protected Website() {}
+	public Website() {}
 
     public Website(String title, String url, List<Tag> tags) {
         this.title = title;
         this.url = url;
         this.tags = tags;
+    }
+    public Website(String title, String url, String tags) {
+        this.title = title;
+        this.url = url;
+        this.setTags(tags);
     }
 	
     public int getId() {
@@ -69,13 +78,21 @@ public class Website {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-
+	
 	public List<Tag> getTags() {
 		return tags;
 	}
-
+	 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public void setTags(String tags) {
+        String[] tagList = tags.split(",");
+        this.tags = new LinkedList<Tag>();
+        for(String tag: tagList){
+        	this.tags.add(new Tag(tag.trim()));
+        }
 	}
 
 	@Override
